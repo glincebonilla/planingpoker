@@ -25,7 +25,7 @@ function EnviarPuntaje(){
 
 $( document ).ready(function() {
    nombre = getUrlParameter('nombre');
-   socket = io.connect('https://lincepocker.herokuapp.com/' , {'forceNew': true});
+   socket = io.connect('https://lincepocker.herokuapp.com' , {'forceNew': true});
 
 	//Escucho los mensajes del evento nuevoparticipante
 	socket.on('nuevoparticipante' , function(data) {
