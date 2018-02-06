@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tablero de puntos</title>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<div id="puntos"></div>
+	<input type="button" value="Mostrar puntajes" onclick="MostrarPutaje();">
+	<input type="button" value="Limpiar" onclick="LimpiarPuntaje();">
+</body>
+</html>
+
+<style>
+	.blanco{
+		color: white;
+	}
+
+	.negro{
+		color: black;
+	}
+
+</style>
+
+<script type="text/javascript">
+	var socket ;
+	$( document ).ready(function() {
+		socket = io.connect('http://localhost:4040' , {'forceNew': true});
+		//Escucho los mensajes del evento nuevoparticipante
+		socket.on('mensajetablero' , function(data) {
+		   render(data);
+		});
+
+
+	function render(data) {
+	//Armo una plantilla con lo que propone ecma script, un string en varias lineas, sin escapar comillas
+	//Llega un array de varios objetos. la funcion map lo que hace es iterar sobre el array que llega
+	  var html = data.map(function(elem, index){
+      return (`<div>
+      <strong>${elem.nombre}</strong>
+	  <em class="blanco">${elem.puntos}</em>
+	  </div>`);
+	}).join( " ");
+    document.getElementById('puntos').innerHTML = html;
+    }
+	});
+
+	function LimpiarPuntaje(){
+    	socket.emit('limpiartablero' , true);
+    }
+
+    function MostrarPutaje(){
+    	$(".blanco").css('color' , 'black');
+    }   
+</script>

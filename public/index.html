@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Participa del planing pocker</title>
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<input type="text" id="txtusuario"><input type="button" value="Entrar" onclick="IrAPuntos();">
+</body>
+</html>
+
+<script type="text/javascript">
+	function IrAPuntos(){
+	if($('#txtusuario').val() == ""){
+		alert("Debes ingresar tu nombre");
+	}else{
+		window.location.replace("puntuar.html?nombre="+$('#txtusuario').val());
+	}
+}
+</script>
