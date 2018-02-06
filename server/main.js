@@ -72,6 +72,6 @@ function ListarParticipantes(){
 }
 
 //Para poner a correr el servidor escribo en la consola node server/main.js
- server.listen(4040 , function() {
+ server.listen(80 , function() {
  	console.log('Servidor corriendo en http://localhost:4040');
  });
