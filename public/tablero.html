@@ -27,7 +27,7 @@
 <script type="text/javascript">
 	var socket ;
 	$( document ).ready(function() {
-		socket = io.connect('https://lincepocker.herokuapp.com' , {'forceNew': true});
+		socket = io.connect('http://localhost:4040' , {'forceNew': true});
 		//Escucho los mensajes del evento nuevoparticipante
 		socket.on('mensajetablero' , function(data) {
 		   render(data);
