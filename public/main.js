@@ -25,7 +25,7 @@ function EnviarPuntaje(){
 
 $( document ).ready(function() {
    nombre = getUrlParameter('nombre');
-   socket = io.connect('http://http://159.89.91.218:4040' , {'forceNew': true});
+   socket = io.connect('http://159.89.91.218:4040' , {'forceNew': true});
 
 	//Escucho los mensajes del evento nuevoparticipante
 	socket.on('nuevoparticipante' , function(data) {
